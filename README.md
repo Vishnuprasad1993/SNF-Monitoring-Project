@@ -11,26 +11,10 @@ Studying positron interactions from the inverse beta decay events and
 3) Actioninit
 4) DetectorConstruction
            Detector Components Used
-               1) Plastic Scintillator Tiles
-                         Polymer Base: Polystyrene
-                         Refractive Index : 1.59
-                         Dimension 200 (W) x 200 (L) x 5 (D) mm
-                         Four 1.5 (W) x 2.5 (D) mm grooves for placement of optical fibres for light transmission
-               2) Wavelength Shifting (WLS) Fibers
-                         Type: BCF-91A
-                         Square Fibers (1.5 x 1.5 x 200 mm)
-                         Shift Blue light to Green
-                         1) Core
-                             Material : Polystyrene
-                             Refractive Index : 1.60
-                             Produce Wavelength shifted photons
-
-                         2) Cladding
-                             Material : PMMA
-                             Refractive Index : 1.49
-                             Surrounds the core
-                             Prevents Optical Photon Loss
-
+               1) Plastic Scintillator Tiles 2) Wavelength Shifting (WLS) Fibers 3) Sipms
+           Arranged plastic scintillator tiles as bottom layer and top layer (90 deg rotation). Each layer has 4 tiles in 2x2 manner. Developed an 8 layered detector setup by placing bottom and top layers at 
+           appropriate distances in z direction. Introduced grooves in each layers, placed Fiber Core and Fiber Cladding inside the grooves, and Sipms at the end of each fibers.
+                         
 
 
 
