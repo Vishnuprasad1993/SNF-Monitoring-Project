@@ -1,0 +1,97 @@
+
+#/tracking/storeTrajectory 0
+
+
+# Start up
+/run/initialize
+
+# Open an OpenGL viewer
+/vis/open OGL
+#/vis/open OGL
+#/vis/open OGLSX
+
+# Draw geometry
+/vis/drawVolume
+
+
+#/vis/viewer/set/style cloud
+# Specify view angle
+/vis/viewer/set/viewpointVector -1 0 0
+
+#/vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/zoomTo 4
+
+# Draw smooth trajectories at end of event
+/vis/scene/add/trajectories rich smooth
+
+# Set time window for visualization
+/vis/viewer/set/timeWindow/startTime 0.5 ns
+/vis/viewer/set/timeWindow/endTime 0.8 ns
+
+#/vis/scene/add/trajectories rich smooth
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 2
+
+/vis/modeling/trajectories/drawByParticleID-0/set e- orange
+/vis/modeling/trajectories/drawByParticleID-0/set e+ red
+/vis/modeling/trajectories/drawByParticleID-0/set gamma magenta
+
+
+# Differentiate trajectories by creation process name (CPN)
+/vis/modeling/trajectories/create/drawByAttribute
+/vis/modeling/trajectories/drawByAttribute-0/setAttribute CPN
+
+# Add values for different processes
+/vis/modeling/trajectories/drawByAttribute-0/addValue scintillation_key Scintillation
+/vis/modeling/trajectories/drawByAttribute-0/addValue cerenkov_key Cerenkov
+/vis/modeling/trajectories/drawByAttribute-0/addValue opwls_key OpWLS
+
+# Set colors for different processes
+/vis/modeling/trajectories/drawByAttribute-0/scintillation_key/setLineColour blue
+/vis/modeling/trajectories/drawByAttribute-0/cerenkov_key/setLineColour yellow
+/vis/modeling/trajectories/drawByAttribute-0/opwls_key/setLineColour magenta
+
+
+
+
+#/vis/modeling/trajectories/select drawByParticleID-0
+#/vis/modeling/trajectories/select drawByAttribute-0
+
+
+# Make the "World" box invisible
+/vis/geometry/set/visibility World 0 false
+
+# Make all volumes visible
+#/vis/geometry/set/visibility World 0 false
+#/vis/geometry/set/visibility FiberClad 0 false
+#/vis/geometry/set/visibility FiberCore 0 false
+#/vis/geometry/set/visibility SiPM 0 true
+#/vis/geometry/set/visibility Tile 0 false
+#/vis/geometry/set/visibility Grid 0 false
+#/vis/geometry/set/visibility Layer 0 false
+#/vis/geometry/set/visibility Row 0 false
+#/vis/geometry/set/visibility TopContainer 0 false
+#/vis/geometry/set/visibility Fiber2 0 true
+#/vis/geometry/set/visibility RowTotal2 0 true
+#/vis/geometry/set/visibility FiberCore 0 false
+#/vis/geometry/set/visibility FiberClad 0 false
+#/vis/geometry/set/visibility FiberTotal 0 false
+
+#/vis/viewer/set/style surface
+#/vis/viewer/set/hiddenEdge true
+
+# Set visualization style
+#/vis/viewer/set/style surface
+#/vis/viewer/set/hiddenEdge true
+
+# Superimpose all of the events from a given run
+/vis/scene/endOfEventAction accumulate
+
+# Run the simulation
+/run/beamOn 5
+
+# Refresh the viewer
+#/vis/viewer/refresh
+#/vis/viewer/flush
